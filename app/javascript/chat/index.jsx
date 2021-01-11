@@ -5,27 +5,31 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 // internal modules
 import App from './components/app';
-import '../assets/stylesheets/application.scss';
+// import '../assets/stylesheets/application.scss';
 
-import selectedChannelReducer from './reducers/selected_channel_reducer';
+// import selectedChannelReducer from './reducers/selected_channel_reducer';
 import messagesReducer from './reducers/messages_reducer';
 
 
-function username() {
-  const username = window.prompt("Enter your username, or leave it blank to be anonymous");
-  if (username === "") {
-    return `anonymous${Math.floor(10 + (Math.random() * 90))}`;
-  }
-  return username;
-}
+// function username() {
+//   const username = window.prompt("Enter your username, or leave it blank to be anonymous");
+//   if (username === "") {
+//     return `anonymous${Math.floor(10 + (Math.random() * 90))}`;
+//   }
+//   return username;
+// }
+
+const chatContainer = document.getElementById('chat_app');
 
 const initialState = {
-  username: username(),
+  // username: username(),
   channels: ["general", "react", "paris"],
-  selectedChannel: "general",
+  // selectedChannel: "general",
   messages: []
 };
 
@@ -33,19 +37,23 @@ const identityReducer = (state = null) => state;
 
 // State and reducers
 const reducers = combineReducers({
-  username: identityReducer,
+  // username: identityReducer,
   channels: identityReducer,
-  selectedChannel: selectedChannelReducer,
-  messages: messagesReducer
+  // selectedChannel: selectedChannelReducer,
+  // messages: messagesReducer
 });
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = composeEnhancers(applyMiddleware(reduxPromise, logger));
+//
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middlewares = applyMiddleware(reduxPromise, logger);
 
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/channels/:channel" component={App} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  chatContainer
 );
