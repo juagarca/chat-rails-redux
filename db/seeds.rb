@@ -11,10 +11,10 @@ Message.destroy_all
 User.destroy_all
 Channel.destroy_all
 
-general = Channel.create(name: "General")
-ruby = Channel.create(name: "Ruby")
-javascript = Channel.create(name: "JavaScrip")
-python = Channel.create(name: "Python")
+general = Channel.create(name: "general")
+ruby = Channel.create(name: "ruby")
+javascript = Channel.create(name: "javascript")
+python = Channel.create(name: "python")
 
 test_user = User.create(email:"test@test.com", password: "123456")
 juan_user = User.create(email:"juan@test.com", password: "123456")
@@ -25,4 +25,4 @@ Message.create(user: juan_user, channel: ruby, content: "first message")
 Message.create(user: test_user, channel: general, content: "second message")
 Message.create(user: test_user, channel: javascript, content: "first message")
 Message.create(user: juan_user, channel: python, content: "first message")
-Message.create(user: test_user, channel: general, content: "second message")
+Message.create(user: juan_user, channel: general, content: "second message")
