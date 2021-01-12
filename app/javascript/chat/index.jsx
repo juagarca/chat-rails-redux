@@ -12,8 +12,11 @@ import App from './components/app';
 import messagesReducer from './reducers/messages_reducer';
 
 // State and reducers
+const chatContainer = document.getElementById('chat_app');
+const channels = JSON.parse(chatContainer.dataset.channels);
+
 const initialState = {
-  channels: ["general", "react", "paris"],
+  channels: channels,
   messages: []
 };
 
@@ -27,7 +30,6 @@ const reducers = combineReducers({
 const middlewares = applyMiddleware(reduxPromise, logger);
 
 const store = createStore(reducers, initialState, middlewares);
-const chatContainer = document.getElementById('chat_app');
 
 ReactDOM.render(
   <Provider store={store}>

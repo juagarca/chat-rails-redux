@@ -37,7 +37,7 @@ class ChannelList extends Component {
         <ul>
           {
             this.props.channels.map((channel) => {
-              return this.showChannel(channel);
+              return this.showChannel(channel.name);
             })
           }
         </ul>
