@@ -4,7 +4,7 @@ export default function(state = null, action) {
   // console.log("aki");
   switch (action.type) {
     case FETCH_MESSAGES:
-      return action.payload.messages;
+      return action.payload;
     case CREATE_MESSAGE:
       const stateDuplicated = state.slice();
       stateDuplicated.push(action.payload);

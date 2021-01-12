@@ -1,5 +1,5 @@
 // TODO: add and export your own actions
-const BASE_URL = '/api/v1';
+const BASE_URL = '/api/v1/channels';
 
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
@@ -7,7 +7,8 @@ export const CHANGE_CHANNEL = 'CHANGE_CHANNEL';
 
 export function fetchMessages(channel) {
   const url = `${BASE_URL}/${channel}/messages`;
-  const promise = fetch(url).then(response => response.json());
+  const promise = fetch(url, { credentials: "same-origin" })
+  .then(response => response.json());
   return {
     type: FETCH_MESSAGES,
     payload: promise
