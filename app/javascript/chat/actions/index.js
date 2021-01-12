@@ -1,5 +1,5 @@
 // TODO: add and export your own actions
-const BASE_URL = 'https://wagon-chat.herokuapp.com';
+const BASE_URL = '/api/v1';
 
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
