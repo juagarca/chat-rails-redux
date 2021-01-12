@@ -29,6 +29,11 @@ body {
     cursor: pointer;
     padding-top: 10px;
   }
+
+  a {
+    color: #42433D;
+    text-decoration: none;
+  }
 }
 
 .message-list {
@@ -70,7 +75,6 @@ body {
 .message {
   margin-top: 10px;
   span {
-    color: blue;
     font-weight: bolder;
   }
   p {

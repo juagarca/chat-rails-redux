@@ -32,9 +32,8 @@ export function createMessage(channel, author, content) {
   };
 }
 
-export function changeChannel(channel) {
+export function changeChannel() {
   return {
-    type: CHANGE_CHANNEL,
-    payload: channel
+    type: CHANGE_CHANNEL
   };
 }

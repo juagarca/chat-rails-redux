@@ -13,32 +13,35 @@ import messagesReducer from './reducers/messages_reducer';
 
 // State and reducers
 const chatContainer = document.getElementById('chat_app');
-const channels = JSON.parse(chatContainer.dataset.channels);
 
-const initialState = {
-  channels: channels,
-  messages: []
-};
+if (chatContainer) {
+  const channels = JSON.parse(chatContainer.dataset.channels);
 
-const identityReducer = (state = null) => state;
+  const initialState = {
+    channels: channels,
+    messages: []
+  };
 
-const reducers = combineReducers({
-  channels: identityReducer,
-  messages: messagesReducer
-});
+  const identityReducer = (state = null) => state;
 
-const middlewares = applyMiddleware(reduxPromise, logger);
+  const reducers = combineReducers({
+    channels: identityReducer,
+    messages: messagesReducer
+  });
 
-const store = createStore(reducers, initialState, middlewares);
+  const middlewares = applyMiddleware(reduxPromise, logger);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/channels/:channel" component={App} />
-      </Switch>
-    </BrowserRouter>
-  </Provider>,
-  chatContainer
-);
+  const store = createStore(reducers, initialState, middlewares);
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/channels/:channel" component={App} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>,
+    chatContainer
+  );
+}
 

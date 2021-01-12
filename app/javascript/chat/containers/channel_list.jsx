@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 import { changeChannel, fetchMessages } from '../actions';
 
@@ -13,7 +14,7 @@ class ChannelList extends Component {
   }
 
   handleClick = (channel) => {
-    this.props.changeChannel(channel);
+    this.props.fetchMessages(channel);
   }
 
   showChannel = (channel) => {
@@ -22,9 +23,10 @@ class ChannelList extends Component {
       <li
         key={channel}
         className={isSelectedChannel ? 'active-channel' : null}
-        onClick={() => this.handleClick(channel)}
-      >
-        #{channel}
+        onClick={() => this.handleClick(channel)}>
+        <Link to={`/channels/${channel}`}>
+          #{channel}
+        </Link>
       </li>
     );
   }
