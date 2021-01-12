@@ -56,7 +56,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    selectedChannel: state.selectedChannel,
     author: state.username
   };
 }

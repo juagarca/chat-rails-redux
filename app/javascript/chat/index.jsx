@@ -8,23 +8,10 @@ import reduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
-// internal modules
 import App from './components/app';
-// import '../assets/stylesheets/application.scss';
-
-// import selectedChannelReducer from './reducers/selected_channel_reducer';
 import messagesReducer from './reducers/messages_reducer';
 
 
-// function username() {
-//   const username = window.prompt("Enter your username, or leave it blank to be anonymous");
-//   if (username === "") {
-//     return `anonymous${Math.floor(10 + (Math.random() * 90))}`;
-//   }
-//   return username;
-// }
-
-const chatContainer = document.getElementById('chat_app');
 
 const initialState = {
   // username: username(),
@@ -40,15 +27,15 @@ const reducers = combineReducers({
   // username: identityReducer,
   channels: identityReducer,
   // selectedChannel: selectedChannelReducer,
-  // messages: messagesReducer
+  messages: messagesReducer
 });
-//
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = applyMiddleware(reduxPromise, logger);
 
+const middlewares = applyMiddleware(reduxPromise, logger);
+const store = createStore(reducers, initialState, middlewares);
+const chatContainer = document.getElementById('chat_app');
 // render an instance of the component in the DOM
 ReactDOM.render(
-  <Provider store={createStore(reducers, initialState, middlewares)}>
+  <Provider store={createStore(store)}>
     <BrowserRouter>
       <Switch>
         <Route path="/channels/:channel" component={App} />
