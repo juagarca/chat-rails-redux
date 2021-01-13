@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { logger } from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -29,7 +29,10 @@ if (chatContainer) {
     messages: messagesReducer
   });
 
-  const middlewares = applyMiddleware(reduxPromise, logger);
+  const logMiddleware = createLogger({
+    predicate: () => process.env.NODE_ENV !== 'production'
+  });
+  const middlewares = applyMiddleware(reduxPromise, logMiddleware);
 
   const store = createStore(reducers, initialState, middlewares);
 
