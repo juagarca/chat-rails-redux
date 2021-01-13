@@ -42,7 +42,7 @@ class MessageForm extends Component {
           onChange={this.handleChange}
           ref={(input) => { this.box = input; }}
         />
-        <button type="submit" className="btn btn-danger">Send</button>
+        <button type="submit" className="btn btn-dark">Send</button>
       </form>
     );
   }
