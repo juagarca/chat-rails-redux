@@ -9,6 +9,17 @@ body {
   // margin-bottom: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: #7F7F7F;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #42433D;
+  font-weight: bolder;
+}
+
 .channel-list {
   width: 20%;
   background-color: #F4F4F4;
@@ -18,6 +29,10 @@ body {
 
   .active-channel {
     font-weight: bolder;
+
+    a {
+      color: #42433D;
+    }
   }
 
   ul {
@@ -28,11 +43,6 @@ body {
   li {
     cursor: pointer;
     padding-top: 10px;
-  }
-
-  a {
-    color: #42433D;
-    text-decoration: none;
   }
 }
 
