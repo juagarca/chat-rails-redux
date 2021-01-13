@@ -15,17 +15,21 @@ export function fetchMessages(channel) {
   };
 }
 
-export function createMessage(channel, author, content) {
+export function createMessage(channel, content) {
+
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+
   const url = `${BASE_URL}/${channel}/messages`;
   const promise = fetch(url, {
     method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
     },
-    body: JSON.stringify({ author, content })
+    credentials: "same-origin",
+    body: JSON.stringify({ content })
   }).then(response => response.json());
-
   return {
     type: CREATE_MESSAGE,
     payload: promise

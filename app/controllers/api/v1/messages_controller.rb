@@ -7,11 +7,14 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
+    content = params[:content]
+    message = Message.create(user: current_user, channel: @channel, content: content)
+    render json: message
   end
 
   private
 
   def retrieve_channel
-    @channel = Channel.where(name: params[:channel_id])
+    @channel = Channel.find_by(name: params[:channel_id])
   end
 end
