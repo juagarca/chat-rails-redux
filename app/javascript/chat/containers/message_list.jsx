@@ -13,7 +13,7 @@ class MessageList extends Component {
   }
 
   componentDidMount() {
-    // this.refresher = setInterval(this.fetchMessagesFromSelectedChannel, 4000);
+    this.refresher = setInterval(this.fetchMessagesFromSelectedChannel, 4000);
   }
 
   componentDidUpdate() {
