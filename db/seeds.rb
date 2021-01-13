@@ -16,7 +16,7 @@ ruby = Channel.create(name: "ruby")
 javascript = Channel.create(name: "javascript")
 python = Channel.create(name: "python")
 
-test_user = User.create(email:"test@test.com", password: "123456", nickname: "juagarca")
+test_user = User.create(email:"juan@email.com", password: "123456", nickname: "juagarca")
 
 Message.create(user: test_user, channel: general, content: "Hola 👋")
 Message.create(user: test_user, channel: general, content: "Thank you for your time")
